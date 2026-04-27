@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belona Dębki | Smażalnia Ryb & Browar</title>
+    
+    <!-- Google Fonts: Playfair Display dla nagłówków (elegancki, boho), Montserrat dla tekstu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome dla ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        belona: '#2A817D',    /* Morska zieleń z logo */
+                        seaLight: '#EAF4F4',  /* Bardzo jasny błękit/zieleń (główne tło) */
+                        seaMid: '#D1E8E6',    /* Średni błękit/zieleń (tło sekcji) */
+                        blueAccent: '#0284C7',/* Oceaniczny błękit na akcenty */
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Dodatkowe style dla płynności */
+        body {
+            background-color: #EAF4F4;
+        }
+        .glass-nav {
+            background: rgba(234, 244, 244, 0.85);
+            backdrop-filter: blur(10px);
+        }
+        .boho-shadow {
+            box-shadow: 0 20px 40px -15px rgba(42, 129, 125, 0.2);
+        }
+        /* Upewnienie się, że nav nie blokuje interakcji z sekcją Hero gdy jest niewidoczny */
+        #navbar.pointer-events-none .pointer-events-auto {
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Nawigacja (Stała na górze, tło i tekst pojawiają się przy scrollu) -->
+    <nav id="navbar" class="fixed w-full z-40 top-0 transition-colors duration-300 pointer-events-none py-4 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center pointer-events-auto">
+            
+            <!-- Lewa strona: Placeholder na logo i ukryta nazwa -->
+            <a href="#" class="font-serif text-2xl font-bold text-belona flex items-center gap-2" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <!-- Puste miejsce 40x40px, w które idealnie wceluje duże logo -->
+                <div id="nav-logo-placeholder" class="h-10 w-10 shrink-0"></div>
+                <span id="nav-brand-name" class="opacity-0 transition-opacity duration-500">BELONA</span>
+            </a>
+
+            <!-- Linki menu -->
+            <div id="nav-links" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wider text-gray-700 opacity-0 transition-opacity duration-500">
+                <a href="Menu.html" class="hover:text-belona transition-colors">MENU</a>
+                <a href="#kontakt" class="hover:text-belona transition-colors">KONTAKT</a>
+            </div>
+
+            <!-- Ikona menu mobilnego -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none opacity-0 transition-opacity duration-500" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobilne -->
+        <div id="mobile-menu" class="hidden md:hidden bg-seaLight absolute w-full left-0 top-full shadow-lg pb-4 pointer-events-auto">
+            <div class="flex flex-col items-center space-y-4 pt-4 text-sm font-semibold tracking-wider text-gray-700">
+                <a href="Menu.html" class="hover:text-belona" onclick="document.getElementById('mobile-menu').classList.add('hidden')">MENU</a>
+                <a href="#kontakt" class="hover:text-belona" onclick="document.getElementById('mobile-menu').classList.add('hidden')">KONTAKT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Główny, animowany logotyp (Pływający jako z-50 nad wszystkim) -->
+    <img id="hero-logo" src="449130647_10228978655923895_222782223963332726_n.jpg" alt="Logo Belona Dębki" class="fixed z-50 top-1/2 left-1/2 w-[80%] max-w-md md:max-w-lg lg:max-w-xl aspect-square object-cover rounded-full shadow-2xl cursor-pointer will-change-transform" style="transform: translate(-50%, -50%) scale(1);" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+
+    <!-- Sekcja Hero (Tło paralaksy, najgłębsza warstwa z-0) -->
+    <div class="fixed inset-0 z-0 flex flex-col items-center justify-center overflow-hidden bg-gray-900 pointer-events-none">
+        <img id="hero-bg" src="tło.webp" alt="Morze Bałtyckie" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-100 ease-out origin-center">
+        <div class="absolute inset-0 bg-black/20"></div>
+        
+        <!-- Wskaźnik scrollowania -->
+        <div id="scroll-indicator" class="absolute bottom-10 w-full flex justify-center z-20 pointer-events-auto">
+            <div class="text-white flex flex-col items-center animate-bounce drop-shadow-md cursor-pointer" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+                <span class="text-xs tracking-widest uppercase mb-2 font-semibold">Odkryj nasz smak</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Główna zawartość strony (Z-30, chowa się pod nawigacją, ale zjeżdża logo) -->
+    <div class="relative z-30 w-full" style="margin-top: 100vh;">
+        <main class="bg-seaLight rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.3)] w-full overflow-hidden">
+
+            <!-- Sekcja: O nas -->
+            <section id="o-nas" class="py-20 md:py-32 px-4 max-w-5xl mx-auto text-center">
+                <h2 class="font-serif text-4xl md:text-5xl text-belona mb-6">Poczuj nasz klimat Bałtyku</h2>
+                <div class="w-24 h-1 bg-blueAccent mx-auto mb-10 opacity-70"></div>
+                <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto font-light">
+                    <strong>Belona</strong> to nie tylko kolejna smażalnia ryb nad morzem. To azyl stworzony z pasji do bałtyckich smaków i relaksu w tropikalnym stylu. Złap oddech w naszych otwartych restauracjach, posłuchaj muzyki na żywo, szumu fal i ciesz się smakiem świeżo złowionej ryby w akompaniamencie rzemieślniczego piwa z naszego browaru w Sopocie.
+                </p>
+            </section>
+
+            <!-- Sekcja: Specjalności -->
+            <section id="menu" class="bg-white py-20 px-4">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h3 class="text-sm font-bold tracking-widest text-blueAccent uppercase mb-2">Nasza specjalność</h3>
+                        <h2 class="font-serif text-4xl text-belona">Co u nas zastaniesz?</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <div class="bg-seaLight rounded-2xl overflow-hidden boho-shadow hover:-translate-y-2 transition-transform duration-300">
+                            <img src="Dorsz.png" alt="Świeża ryba z frytkami" class="w-full h-56 object-cover">
+                            <div class="p-8 text-center">
+                                <h4 class="font-serif text-2xl text-belona mb-3">Złocista Rybka</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4">Dorsz, flądra, turbot i tytułowa belona. Łowione w Dębkach w kutrach ORŁ-8. Zawsze świeże, podawane w chrupiącej, autorskiej panierce lub prosto z pieca. Prawdziwy smak morza.</p>
+                                <a href="#" class="text-blueAccent font-bold text-sm uppercase tracking-wider hover:text-belona transition-colors">Zobacz menu rybne <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="bg-seaLight rounded-2xl overflow-hidden boho-shadow hover:-translate-y-2 transition-transform duration-300">
+                            <img src="Browar.jpg" alt="Piwo rzemieślnicze" class="w-full h-56 object-cover">
+                            <div class="p-8 text-center">
+                                <h4 class="font-serif text-2xl text-belona mb-3">Lokalny Browar</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4">Gasisz pragnienie czymś wyjątkowym. Browar Miejski Sopot dostarcza nam swoje najlepsze piwa, nalewane dla was z paki pickup'a z lat 70. Idealne orzeźwienie po słonecznym dniu na plaży.</p>
+                                <a href="#" class="text-blueAccent font-bold text-sm uppercase tracking-wider hover:text-belona transition-colors">Karta piw <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="bg-seaLight rounded-2xl overflow-hidden boho-shadow hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://images.unsplash.com/photo-1598387181032-a3103a2db5b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Klimat boho" class="w-full h-56 object-cover">
+                            <div class="p-8 text-center">
+                                <h4 class="font-serif text-2xl text-belona mb-3">Muzyka na żywo</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4">Regularnie, 3 razy w tygodniu, Twojej kolacji będzie towarzyszyć muzyka grana przez urodzonych lokalnych artystów, którzy poruszają do tańca.</p>
+                                <a href="#galeria" class="text-blueAccent font-bold text-sm uppercase tracking-wider hover:text-belona transition-colors">Zobacz galerię <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sekcja: Klimat -->
+            <section id="klimat" class="py-20 px-4 bg-seaMid">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="font-serif text-4xl text-belona mb-4">Nasz Tropikalny Bałtyk</h2>
+                        <!-- <p class="text-gray-600">Tak wygląda sielanka w Dębkach.</p> -->
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="col-span-2 row-span-2 overflow-hidden rounded-xl">
+                            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Plaża" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="overflow-hidden rounded-xl h-48 md:h-auto">
+                            <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Detale restauracji" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="overflow-hidden rounded-xl h-48 md:h-auto">
+                            <img src="https://images.unsplash.com/photo-1615887023516-9b6bcd559e87?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Koktajl" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="col-span-2 overflow-hidden rounded-xl h-48 md:h-64">
+                            <img src="Grill.jpg" alt="Ryba z grilla" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Zintegrowana Sekcja Kontaktowa z Innymi Lokalizacjami -->
+            <section id="kontakt" class="py-20 px-4 bg-white">
+                <div class="max-w-6xl mx-auto">
+
+                    <!-- Główny Kontakt: Dębki -->
+                    <div class="flex flex-col md:flex-row gap-12 items-start mb-20">
+                        <div class="w-full md:w-1/2">
+                            <h2 class="font-serif text-4xl text-belona mb-6">Wpadnij na rybkę!</h2>
+                            <p class="text-gray-600 mb-8 leading-relaxed">Zapraszamy do naszej restauracji, gdzie świeża ryba i rzemieślnicze piwo czekają na Ciebie każdego dnia.</p>
+
+                            <div class="space-y-4 mb-10">
+                                <div class="flex items-center gap-4 text-gray-700">
+                                    <div class="w-10 h-10 rounded-full bg-seaLight flex items-center justify-center text-belona shadow-sm"><i class="fas fa-map-marker-alt"></i></div>
+                                    <span>ul. Spacerowa 1, 84-110 Dębki</span>
+                                </div>
+                                <div class="flex items-center gap-4 text-gray-700">
+                                    <div class="w-10 h-10 rounded-full bg-seaLight flex items-center justify-center text-belona shadow-sm"><i class="fas fa-phone"></i></div>
+                                    <span>+48 123 456 789</span>
+                                </div>
+                                <div class="flex items-center gap-4 text-gray-700">
+                                    <div class="w-10 h-10 rounded-full bg-seaLight flex items-center justify-center text-belona shadow-sm"><i class="fas fa-clock"></i></div>
+                                    <span>Codziennie: 11:00 - 22:00</span>
+                                </div>
+                            </div>
+
+                            <!-- Sociale -->
+                            <div class="flex flex-col sm:flex-row gap-4 items-center">
+                                <a href="https://www.facebook.com/people/Belona-Sma%C5%BCalnia-Ryb-Browar-D%C4%99bki/61561354180348/" target="_blank" class="w-full sm:w-80 inline-flex justify-center items-center gap-2 bg-[#1877F2] text-white px-6 py-4 rounded-full font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </a>
+                                <a href="https://www.instagram.com/" target="_blank" class="w-full sm:w-80 inline-flex justify-center items-center gap-2 bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white px-6 py-4 rounded-full font-semibold hover:opacity-90 transition-all shadow-lg hover:shadow-xl">
+                                    <i class="fab fa-instagram"></i> Instagram
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Mapa Dębek -->
+                        <div class="w-full md:w-1/2 h-[450px] bg-gray-100 rounded-3xl overflow-hidden shadow-inner relative flex items-center justify-center group border-8 border-seaLight">
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mapa" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000">
+                            <div class="relative z-10 bg-white px-6 py-3 rounded-full font-semibold text-belona shadow-xl border border-belona/10">
+                                <i class="fas fa-location-dot mr-2"></i> Belona Dębki
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sekcja: Inne lokalizacje (Sub-część kontaktu) -->
+                    <div class="pt-20 border-t border-seaLight">
+                        <div class="text-center mb-12">
+                            <h3 class="font-serif text-2xl text-belona italic">To nie wszystko!</h3>
+                            <p class="text-gray-500 mt-2">Zapraszamy do naszych pozostałych przystani na wybrzeżu:</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                            <!-- Karta: Plaża -->
+                            <a href="#" class="group relative bg-seaLight p-8 rounded-3xl border border-transparent hover:border-blueAccent transition-all duration-300 hover:shadow-2xl overflow-hidden">
+                                <div class="absolute -right-8 -top-8 w-24 h-24 bg-blueAccent/5 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                                <div class="flex items-start gap-5">
+                                    <div class="w-14 h-14 shrink-0 rounded-2xl bg-white flex items-center justify-center text-blueAccent shadow-sm group-hover:bg-blueAccent group-hover:text-white transition-colors duration-300">
+                                        <i class="fas fa-umbrella-beach text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-xl text-gray-800 mb-2 group-hover:text-blueAccent transition-colors">Belona Beach Bar</h4>
+                                        <p class="text-sm text-gray-600 mb-4">Drink & Chill bezpośrednio na piasku. Idealne miejsce na zachód słońca z koktajlem w ręku.</p>
+                                        <span class="inline-flex items-center text-blueAccent text-xs font-bold uppercase tracking-widest gap-2">Sprawdź lokalizację <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Karta: Jastarnia -->
+                            <a href="#" class="group relative bg-seaLight p-8 rounded-3xl border border-transparent hover:border-blueAccent transition-all duration-300 hover:shadow-2xl overflow-hidden">
+                                <div class="absolute -right-8 -top-8 w-24 h-24 bg-blueAccent/5 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                                <div class="flex items-start gap-5">
+                                    <div class="w-14 h-14 shrink-0 rounded-2xl bg-white flex items-center justify-center text-blueAccent shadow-sm group-hover:bg-blueAccent group-hover:text-white transition-colors duration-300">
+                                        <i class="fas fa-anchor text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-xl text-gray-800 mb-2 group-hover:text-blueAccent transition-colors">Belona Port Jastarnia</h4>
+                                        <p class="text-sm text-gray-600 mb-4">Owoce Morza & Grill w samym sercu portu. Ryba prosto z kutra i widok na Zatokę.</p>
+                                        <span class="inline-flex items-center text-blueAccent text-xs font-bold uppercase tracking-widest gap-2">Sprawdź lokalizację <i class="fas fa-arrow-right"></i></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stopka (Zgodna z główną stroną) -->
+            <footer class="bg-belona text-seaLight py-12 text-center relative z-40">
+                <p class="font-serif text-2xl mb-4">Belona Smażalnia Ryb & Browar</p>
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-seaLight hover:text-white transition-colors text-xl"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-seaLight hover:text-white transition-colors text-xl"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="text-sm text-teal-100/70">&copy; 2026 Belona Dębki. Wszelkie prawa zastrzeżone.</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Skrypt paralaksy i lotu logo -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const logo = document.getElementById("hero-logo");
+            const bg = document.getElementById("hero-bg");
+            const indicator = document.getElementById("scroll-indicator");
+            const navbar = document.getElementById("navbar");
+            const placeholder = document.getElementById("nav-logo-placeholder");
+            const navBrand = document.getElementById("nav-brand-name");
+            const navLinks = document.getElementById("nav-links");
+            const mobileBtn = document.getElementById("mobile-menu-btn");
+            
+            let vh = window.innerHeight;
+            let isSnapped = false;
+            let flightTimeout = null;
+            
+            window.addEventListener("resize", () => {
+                vh = window.innerHeight;
+                updateParallax();
+            });
+
+            function updateParallax() {
+                const scrollY = window.scrollY;
+                const maxScroll = vh * 0.85; 
+                let progress = scrollY / maxScroll;
+                
+                if (progress > 1) progress = 1;
+                if (progress < 0) progress = 0;
+
+                const pRect = placeholder.getBoundingClientRect();
+                const targetCenterX = pRect.left + pRect.width / 2;
+                const targetCenterY = pRect.top + pRect.height / 2;
+                
+                const startCenterX = window.innerWidth / 2;
+                const startCenterY = window.innerHeight / 2;
+                
+                const moveX = targetCenterX - startCenterX;
+                const moveY = targetCenterY - startCenterY;
+                
+                const baseWidth = logo.offsetWidth || 300; 
+                const targetScale = pRect.width / baseWidth;
+                
+                const splitPoint = 0.66;
+
+                if (progress > splitPoint) {
+                    if (!isSnapped) {
+                        logo.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                        isSnapped = true;
+                        clearTimeout(flightTimeout);
+                    }
+                    logo.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) scale(${targetScale})`;
+                    logo.classList.remove('shadow-2xl');
+                    logo.classList.add('shadow-md');
+
+                    navBrand.style.opacity = 1;
+                    navLinks.style.opacity = 1;
+                    mobileBtn.style.opacity = 1;
+                    navbar.classList.add("glass-nav");
+                    navbar.classList.remove("pointer-events-none");
+                } else {
+                    if (isSnapped) {
+                        logo.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                        isSnapped = false;
+                        clearTimeout(flightTimeout);
+                        flightTimeout = setTimeout(() => {
+                            if (!isSnapped) logo.style.transition = 'none';
+                        }, 500);
+                    }
+                    const currentY = moveY * progress;
+                    const currentScale = 1 - (1 - targetScale) * progress;
+                    logo.style.transform = `translate(calc(-50% + 0px), calc(-50% + ${currentY}px)) scale(${currentScale})`;
+                    logo.classList.add('shadow-2xl');
+                    logo.classList.remove('shadow-md');
+
+                    navBrand.style.opacity = 0;
+                    navLinks.style.opacity = 0;
+                    mobileBtn.style.opacity = 0;
+                    navbar.classList.remove("glass-nav");
+                    navbar.classList.add("pointer-events-none");
+                }
+
+                bg.style.transform = `scale(${1 + (progress * 0.15)})`;
+                bg.style.filter = `brightness(${1 - (progress * 0.3)})`;
+
+                if (scrollY > 50) {
+                    indicator.style.opacity = 0;
+                    indicator.style.pointerEvents = 'none';
+                } else {
+                    indicator.style.opacity = 1;
+                    indicator.style.pointerEvents = 'auto';
+                }
+            }
+
+            window.addEventListener("scroll", updateParallax, { passive: true });
+            updateParallax();
+        });
+    </script>
+</body>
+</html>
