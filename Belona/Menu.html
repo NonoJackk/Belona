@@ -1,0 +1,454 @@
+﻿<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Belona Dębki</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        belona: '#2A817D',
+                        seaLight: '#EAF4F4',
+                        seaMid: '#D1E8E6',
+                        blueAccent: '#0284C7',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #EAF4F4;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Styl kart menu */
+        .menu-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+            .menu-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgba(42, 129, 125, 0.15);
+            }
+
+            .menu-card img {
+                transition: transform 0.6s ease;
+            }
+
+            .menu-card:hover img {
+                transform: scale(1.05);
+            }
+    </style>
+</head>
+<body class="text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Nawigacja Główna -->
+    <nav class="fixed w-full z-50 top-0 glass-nav shadow-sm h-[72px] flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+            <a href="Belona.html" class="flex items-center gap-2 text-gray-600 hover:text-belona transition-colors font-medium text-sm">
+                <i class="fas fa-arrow-left"></i> Wróć
+            </a>
+            <a href="Belona.html" class="font-serif text-2xl font-bold text-belona tracking-wider">BELONA</a>
+            <div class="w-16"></div>
+        </div>
+    </nav>
+
+    <!-- Sekcja Hero -->
+    <header class="relative pt-24 pb-32 flex items-center justify-center bg-gray-900 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="[Tło menu restauracji]" class="absolute inset-0 w-full h-full object-cover opacity-40">
+        <div class="relative z-10 text-center px-4 mt-8">
+            <h3 class="text-sm font-bold tracking-widest text-seaMid uppercase mb-4 drop-shadow-md">Smaki prosto z kutra</h3>
+            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6 drop-shadow-lg">Nasza Karta</h1>
+            <div class="w-24 h-1 bg-belona mx-auto opacity-90 rounded-full"></div>
+        </div>
+    </header>
+
+    <!-- Pasek Nawigacji Kategorii (Przyklejony pod głównym nav) -->
+    <div class="sticky top-[72px] z-40 bg-white shadow-md border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <ul class="flex overflow-x-auto no-scrollbar py-4 space-x-8 text-sm font-semibold tracking-wider text-gray-500 uppercase whitespace-nowrap">
+                <li><a href="#zupy" class="category-link hover:text-belona transition-colors">Zupy</a></li>
+                <li><a href="#przystawki" class="category-link hover:text-belona transition-colors">Przystawki</a></li>
+                <li><a href="#dania-rybne" class="category-link hover:text-belona transition-colors">Ryby</a></li>
+                <li><a href="#dania-miesne" class="category-link hover:text-belona transition-colors">Mięsa</a></li>
+                <li><a href="#dla-dzieci" class="category-link hover:text-belona transition-colors">Dla Dzieci</a></li>
+                <li><a href="#desery" class="category-link hover:text-belona transition-colors">Desery</a></li>
+                <li><a href="#napoje" class="category-link hover:text-belona transition-colors">Napoje</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="bg-white pb-24 relative z-30 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+        <div class="max-w-7xl mx-auto px-4 pt-16">
+
+            <!-- KATEGORIA: Zupy -->
+            <section id="zupy" class="pt-20 pb-16 scroll-mt-[140px] border-b border-gray-100">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-seaLight text-belona mb-4">
+                        <i class="fas fa-soup text-xl"></i>
+                    </div>
+                    <h2 class="font-serif text-4xl text-gray-800">Rozgrzewające Zupy</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Karta 1 -->
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1547592110-803447607f4c?auto=format&fit=crop&w=600&q=80" alt="[Zupa Rybna]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Kaszubska Rybna</h4>
+                                <span class="font-bold text-belona text-lg">32 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed mb-4 flex-grow">Kawałki dorsza i łososia, warzywa korzeniowe, pomidory i dużo świeżego koperku.</p>
+                        </div>
+                    </div>
+                    <!-- Karta 2 -->
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80" alt="[Krem z Pomidorów]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Krem z Pomidorów</h4>
+                                <span class="font-bold text-belona text-lg">24 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed mb-4 flex-grow">Aksamitny krem z oliwą truflową, serwowany z rzemieślniczą grzanką czosnkową.</p>
+                            <div class="flex gap-2">
+                                <span class="text-[10px] text-white bg-green-500 px-2 py-1 rounded-full uppercase font-bold tracking-wider">Vege</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KATEGORIA: Przystawki -->
+            <section id="przystawki" class="pt-20 pb-16 scroll-mt-[140px] border-b border-gray-100">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-seaLight text-belona mb-4">
+                        <i class="fas fa-utensils text-xl"></i>
+                    </div>
+                    <h2 class="font-serif text-4xl text-gray-800">Przystawki</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Karta 1 -->
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1534604973900-c41ab4c5e338?auto=format&fit=crop&w=600&q=80" alt="[Tatar z Łososia]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Tatar z Łososia</h4>
+                                <span class="font-bold text-belona text-lg">46 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed flex-grow">Siekany łosoś, kapary, szalotka i żółtko przepiórcze. Podawany z domowym masłem.</p>
+                        </div>
+                    </div>
+                    <!-- Karta 2 -->
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=600&q=80" alt="[Krewetki]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Krewetki na Winie</h4>
+                                <span class="font-bold text-belona text-lg">49 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed flex-grow">Duszone na białym winie z czosnkiem, chili i dużą ilością natki pietruszki.</p>
+                        </div>
+                    </div>
+                    <!-- Karta 3 -->
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-56">
+                            <img src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&q=80" alt="[Śledź]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Śledź Bałtycki</h4>
+                                <span class="font-bold text-belona text-lg">28 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed flex-grow">W zalewie korzennej z cebulką i jabłkiem, podawany na ciemnym chlebie.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KATEGORIA: Ryby -->
+            <section id="dania-rybne" class="pt-20 pb-16 scroll-mt-[140px] border-b border-gray-100">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blueAccent/10 text-blueAccent mb-4">
+                        <i class="fas fa-fish text-xl"></i>
+                    </div>
+                    <h3 class="text-sm font-bold tracking-widest text-blueAccent uppercase mb-2">Prosto z kutra</h3>
+                    <h2 class="font-serif text-4xl text-gray-800">Nasze Świeże Ryby</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Belona Special -->
+                    <div class="menu-card bg-seaLight/30 rounded-3xl overflow-hidden border border-belona/10 flex flex-col h-full ring-2 ring-belona/5">
+                        <div class="overflow-hidden h-64 relative">
+                            <img src="https://images.unsplash.com/photo-1534080355125-27a3ad3595d7?auto=format&fit=crop&w=600&q=80" alt="[Belona z Grilla]" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 bg-belona text-white text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded-full shadow-lg">Specjalność Belony</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-2xl font-bold text-belona">Tytułowa Belona</h4>
+                                <span class="font-bold text-belona text-xl">65 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-700 font-medium mb-4 flex-grow">Pieczona w całości z masłem ziołowym i cytryną. Unikalna ryba o zielonych ościach.</p>
+                            <p class="text-[11px] text-gray-400 italic leading-tight">* Cena za całą sztukę (ok. 350-400g)</p>
+                        </div>
+                    </div>
+                    <!-- Dorsz -->
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" alt="[Dorsz Smażony]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Dorsz Bałtycki</h4>
+                                <span class="font-bold text-belona text-lg">18 zł / 100g</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed flex-grow">Filet smażony w chrupiącej złocistej panierce lub pieczony z rozmarynem.</p>
+                        </div>
+                    </div>
+                    <!-- Sandacz -->
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1532347922424-c652d9b7208e?auto=format&fit=crop&w=600&q=80" alt="[Sandacz]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Sandacz z Pieca</h4>
+                                <span class="font-bold text-belona text-lg">22 zł / 100g</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed flex-grow">Delikatny filet duszony z warzywami w papilocie. Bardzo soczysty.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KATEGORIA: Mięsa -->
+            <section id="dania-miesne" class="pt-20 pb-16 scroll-mt-[140px] border-b border-gray-100">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-seaLight text-belona mb-4">
+                        <i class="fas fa-drumstick-bite text-xl"></i>
+                    </div>
+                    <h2 class="font-serif text-4xl text-gray-800">Dania Mięsne</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=800&q=80" alt="[Schabowy]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Schabowy z Kością</h4>
+                                <span class="font-bold text-belona text-lg">48 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light">Ogromny kotlet smażony na smalcu, serwowany z ziemniakami i młodą kapustą.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80" alt="[Pierś z Kurczaka]" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Grillowana Pierś</h4>
+                                <span class="font-bold text-belona text-lg">42 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light">Soczysty filet marynowany w ziołach, podawany z frytkami i mixem sałat.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KATEGORIA: Dla Dzieci -->
+            <section id="dla-dzieci" class="pt-20 pb-16 scroll-mt-[140px] border-b border-gray-100">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                        <i class="fas fa-child text-xl"></i>
+                    </div>
+                    <h2 class="font-serif text-4xl text-gray-800">Dla Małych Marynarzy</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=400&q=80" alt="[Paluszki rybne]" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800">Paluszki Rybne</h4>
+                                <span class="font-bold text-belona">32 zł</span>
+                            </div>
+                            <p class="text-xs text-gray-500 font-light leading-relaxed">Z dorsza, z frytkami i surówką z marchewki.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=400&q=80" alt="[Nuggetsy]" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800">Nuggetsy</h4>
+                                <span class="font-bold text-belona">30 zł</span>
+                            </div>
+                            <p class="text-xs text-gray-500 font-light leading-relaxed">Chrupiący kurczak z frytkami i ketchupem.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=400&q=80" alt="[Naleśniki]" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800">Naleśniki (2 szt.)</h4>
+                                <span class="font-bold text-belona">24 zł</span>
+                            </div>
+                            <p class="text-xs text-gray-500 font-light leading-relaxed">Z twarożkiem i domowym musem owocowym.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KATEGORIA: Desery -->
+            <section id="desery" class="pt-20 pb-16 scroll-mt-[140px] border-b border-gray-100">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-pink-50 text-pink-500 mb-4">
+                        <i class="fas fa-ice-cream text-xl"></i>
+                    </div>
+                    <h2 class="font-serif text-4xl text-gray-800">Desery</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" alt="[Sernik]" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Sernik Dębecki</h4>
+                                <span class="font-bold text-belona text-lg">26 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed">Pieczony z białą czekoladą i gorącym sosem malinowym.</p>
+                        </div>
+                    </div>
+                    <div class="menu-card bg-gray-50 rounded-3xl overflow-hidden border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?auto=format&fit=crop&w=600&q=80" alt="[Szarlotka]" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-xl font-bold text-gray-800">Szarlotka na Ciepło</h4>
+                                <span class="font-bold text-belona text-lg">24 zł</span>
+                            </div>
+                            <p class="text-sm text-gray-500 font-light leading-relaxed">Z rzemieślniczymi lodami waniliowymi i karmelową nutą.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KATEGORIA: Napoje -->
+            <section id="napoje" class="pt-20 pb-24 scroll-mt-[140px]">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-seaLight text-belona mb-4">
+                        <i class="fas fa-glass-water text-xl"></i>
+                    </div>
+                    <h2 class="font-serif text-4xl text-gray-800">Napoje i Bar</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-4xl mx-auto bg-gray-50 p-10 rounded-[3rem] border border-gray-100">
+                    <div>
+                        <h5 class="font-bold text-gray-800 uppercase tracking-widest text-xs mb-8 border-b border-gray-200 pb-3">Zimne i Alkohole</h5>
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-end border-b border-dashed border-gray-200 pb-2">
+                                <span class="text-sm font-medium">Lemoniada Belona (0.4l)</span>
+                                <span class="font-bold text-belona">18 zł</span>
+                            </div>
+                            <div class="flex justify-between items-end border-b border-dashed border-gray-200 pb-2 text-blueAccent">
+                                <span class="text-sm font-bold">Piwo Browar Sopot (0.5l)</span>
+                                <span class="font-bold">20 zł</span>
+                            </div>
+                            <div class="flex justify-between items-end border-b border-dashed border-gray-200 pb-2">
+                                <span class="text-sm font-medium">Aperol Spritz</span>
+                                <span class="font-bold text-belona">32 zł</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-gray-800 uppercase tracking-widest text-xs mb-8 border-b border-gray-200 pb-3">Kawa i Herbata</h5>
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-end border-b border-dashed border-gray-200 pb-2">
+                                <span class="text-sm font-medium">Cappuccino</span>
+                                <span class="font-bold text-belona">16 zł</span>
+                            </div>
+                            <div class="flex justify-between items-end border-b border-dashed border-gray-200 pb-2">
+                                <span class="text-sm font-medium">Caffe Latte</span>
+                                <span class="font-bold text-belona">18 zł</span>
+                            </div>
+                            <div class="flex justify-between items-end border-b border-dashed border-gray-200 pb-2">
+                                <span class="text-sm font-medium">Herbata Zimowa Belony</span>
+                                <span class="font-bold text-belona">22 zł</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Stopka (Zgodna z główną stroną) -->
+    <footer class="bg-belona text-seaLight py-12 text-center relative z-40">
+        <p class="font-serif text-2xl mb-4">Belona Smażalnia Ryb & Browar</p>
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="#" class="text-seaLight hover:text-white transition-colors text-xl"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-seaLight hover:text-white transition-colors text-xl"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="text-sm text-teal-100/70">&copy; 2026 Belona Dębki. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.category-link');
+            const navHeight = 72 + 56;
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= (sectionTop - navHeight - 40)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-belona', 'scale-110');
+                    if (link.getAttribute('href').includes(current) && current !== '') {
+                        link.classList.add('text-belona', 'scale-110');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
